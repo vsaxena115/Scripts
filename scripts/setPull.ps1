@@ -8,8 +8,9 @@ configuration Sample_xDscWebService
         [string] $certificateThumbPrint = "AllowUnencryptedTraffic"
     ) 
  
-    Import-DSCResource -ModuleName xPSDesiredStateConfiguration 
- 
+    Enable-PSRemoting -Force
+    Import-DSCResource -ModuleName xPSDesiredStateConfiguration
+
     Node $NodeName 
     { 
         WindowsFeature DSCServiceFeature 
@@ -52,5 +53,5 @@ configuration Sample_xDscWebService
 }  
 
 Sample_xDscWebService  
-Start-DscConfiguration -Wait -Verbose .\Sample_xDscWebService
+Start-DscConfiguration -Wait -Verbose -ComputerName 'localhost' -Path ".\Sample_xDscWebService"
 
