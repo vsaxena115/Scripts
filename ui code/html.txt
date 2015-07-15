@@ -1,0 +1,284 @@
+<html><head>
+    <title>PBPortal - Templates</title>
+    <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="Style/style.css">
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js" type="text/javascript"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script>
+        $("form").validate({
+            showErrors: function (errorMap, errorList) {
+
+                // Clean up any tooltips for valid elements
+                $.each(this.validElements(), function (index, element) {
+                    var $element = $(element);
+                    $element.data("title", "") // Clear the title - there is no error associated anymore
+                        .removeClass("error")
+                        .tooltip("destroy");
+                });
+
+                // Create new tooltips for invalid elements
+                $.each(errorList, function (index, error) {
+                    var $element = $(error.element);
+                    $element.tooltip("destroy") // Destroy any pre-existing tooltip so we can repopulate with new tooltip content
+                        .data("title", error.message)
+                        .addClass("error")
+                        .tooltip(); // Create a new tooltip based on the error message we just set in the title
+                });
+            },
+            submitHandler: function (form) {
+                $('.submit').attr("disabled", 'disabled');
+                alert('submitting the form')
+                form.submit();
+            }
+            
+        });
+
+
+        function logout() {
+            '';
+            '';
+            '';
+            window.location.assign("default.aspx")
+        }
+
+
+        function cleardev() {
+            var devoptions = $('table#DevConfig').find('input:radio');
+            devoptions.removeAttr('checked');
+        }
+        function clearbuild() {
+            var devoptions = $('table#BuildConfig').find('input:radio');
+            devoptions.removeAttr('checked');
+        }
+        function cleartest() {
+            var devoptions = $('table#TestConfig').find('input:radio');
+    devoptions.removeAttr('checked');
+}
+
+
+    </script>
+
+</head>
+<body>
+    <nav class="navbar navbar-static-top bs-docs-nav area">
+        <input type="button" class="btn btn-link navbar-brand" value="PBPortal">
+        <input type="button" class="btn btn-link navbar-right navbar-brand" value="Sign Out" onclick="logout()">
+    </nav>
+    <div>
+        <div>
+            <form method="post" action="Default1" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="LsohdDeuERXrqEeWdgMjwmaNiYcddB3BBHcnqn7QDZ+heYReGpYQz4N7fl1e4BqZYv5U7l9jxhIk3AM8m+FGmF6lzZkxJLRWU+nyF9mf9iLP4YYlBGRcoBKaGJn1JZAymH3m0MVGYFet8jb0P1cfv0yYNAQHhksGk0gZIf8qrm+3ao9a4lQ6N2oKxLcGUxUZrRKp7DIEeyuyRCwK3SK38oj9/EW68wyAIkkeuRWO0z3iqegKHbQqPyXR/6472DMX5h5UuKt2cLQRxnJx6O2HRcPIZy7YM1Mh0rvyq8TNbPGgZ3lxX0IIa300hHLWQv7IaJYN7oIyNPIIoRSJ+Lftb1wDju4U3f9bSAobnRREN7gyYWDaMSu5Wv5HiEQcj3Fn/x+XPUjRAina4GJBPm6SHHXUbFZrYAEcsaBzwswFMcKSJ2Hho7MYJUOE2M7bM/yI+t0KZ/RZRmDGCLveyYcRvqlrl8Zo3zJgZ3+N+/TAgI0XskHh1YqDf5ZYn/EX+czx491pnfLw6c/2pxB4FG+wBJi2fX4pow1cmL8G61k/BfIdIHoP6lG02ihl5ZpsGPt6qMtFOrhXMJAjSrCL0YO/lIe1NtnlYbYO/ivjSjeZVObR75zS2GJGO9S35cd7rEIVPBVrMbitiMoUAeUag1JqNLEw2LN+gD4v6hcgpNW2ZDY1A1mVdWkMqhuy2VuwyaTNn5aOIZhw6VBObq2D7zQ7aUL31yEVB4jKDWI7LqzGzSUbMlrlwO/7dLMTeTi7QapJmaXAntPTY7m2BoYNIXQdW7reIOXcRAhRcdtZmdR2nI1aqdV57X3nxads+UbtqO0dPQ64b8BVXmXxfpxuHpoyRNjom58+q1WOx29Az9FoWE3s2U+Otu+hdEOcELHiDQRiiWQMyI1p0B0+LEmax505rP3APT85qiSgg1jYIqyjmyVMbB6n/WGsXNaCx2KbAFIIfNpVGeowfCs76VwxK7tlDNCCetflNmHpwaLjN+g3ezjECfU98nW3o9c8yTIkibLDrWbCBUCIg+xP4iVfmGjcyEnlwwhhg2PHTb4Q9IwrrBBg1gOc8fw3niwjBX7QehevUOmi+K9exMWwb3htD7yVQvdDMQGcPLoFB1NRQc+vUZd/Xz4R87GJ9PawlnihUGhlQ0EMLpPir79HGyPADVZZg2+kCpgK9PGSXWryQL+k/O57xwhTy+w+hmwpb/LD27jVG3o3rd57wIkR9yy2JYUDMxGmUdJXEpv/h3Y6a2cfD8fg9XkMajJsfzxaa/RI+ZJ/KeYdLeIRT3KrHEXcthGtXPjHZR0unXjzTPnXZUfLXT0+ifdPAboTJVrCoeQ5QrvM/yyhSGoUT4AwyEzoofLQoWVwXW8RmWvabujzO/2kEzqpz2fJh3CVXZg4owpSxOx9">
+</div>
+
+                <center>
+                <div class="row param area">
+                    <center>
+                            <h3>Credentials.</h3>
+                    <h5>(The credentials will be common for all resources created)</h5></center><br>
+                        <label for="Listbox3">Select the subscription you wish to provision the resource group on.</label>
+                        <select name="Listbox3" id="Listbox3" class="form-control" required="true">
+
+</select><br>
+                            <div class="form-group">
+                                <label for="adminUsername">Admin Username</label>
+                                <input type="text" class="form-control" id="adminUsername" pattern="^[a-z]+$" data-toggle="tooltip" data-placement="bottom" title="Must have only lowercase alphabets" value="newuser" name="adminUsername" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="adminPassword">Admin Password </label>
+                                <input type="password" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Must have atleast one uppercase alphabet and one number" id="adminPassword" placeholder="Enter a password" pattern="^\w*(?=\w*\d)(?=\w*[a-z])(?=\w*[A-Z])\w*$" minlength="6" name="adminPassword" required="">
+                            </div>
+                    <div class="form-group">
+                        <label for="location">Select location</label>
+                        <select class="form-control" id="location" title="Cost varies based on location" name="location">
+                            <option value="NorthCentralUS">North Central US</option>
+                            <option value="SouthCentralUS">South Central US</option>
+                            <option value="WestUS" selected="">West US</option>
+                            <option value="EastUS">East US</option>
+                            <option value="NorthEurope">North Europe</option>
+                            <option value="WestEurope">West Europe</option>
+                            <option value="EastAsia">East Asia</option>
+                            <option value="SoutheastAsia">Southeast Asia</option>
+                        </select>
+                    </div>
+                </div>
+                  </center>
+                <br>
+                <div class="row">
+                    <div class="col-xs-6 col-md-4 area" id="dev">
+                        <center>
+                            <h3>Dev.</h3>
+                            <h5>Enter number of virtual machines</h5>
+                            <input type="number" min="0" name="devNumberOfInstances" data-msg-number="The input must be a number" data-msg-range="The number of VMs must be 0 to 10" data-rule-number="true" data-rule-range="[0,10]" title="Number of VMs must be a non-negative integer" required="" id="devNumberOfInstances" class="form-control"><br>
+                        </center>
+                        <h5>Select the configuration for the virtual machines.</h5>
+                        <div>
+                            <ul class="configurations">
+                                <table id="DevConfig">
+	<tbody><tr>
+		<td><input id="DevConfig_0" type="radio" name="DevConfig" value="1"><label for="DevConfig_0">Visual Studio 2015 Enterprise RC</label></td>
+	</tr>
+</tbody></table>
+                                
+                            </ul>
+                            <center>OR<br></center>
+                            Provide the link for your personal configuration.<br>
+                            <input class="form-control" type="url" title="Example: https://github.com/prathammehta/DevOps/raw/master/ContosoWebsite.ps1.zip" placeholder="Enter DSC url" name="devmodulesUrl" onfocus="cleardev();"><br>
+                            <input class="form-control" type="text" title="Example: DevConfig.ps1\\DevConfig" placeholder="Enter configuration function" name="devconfigurationFunction" onfocus="cleardev();">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>
+                                    Select VM Size
+                                </label>
+                                <br>
+                                <select name="devvmSize" id="devvmSize" class="form-control">
+	<option value="Standard_A1     ">Personal Use (1-3 users)</option>
+	<option value="Standard_A2">Team Use (3-10 users)</option>
+	<option value="Standard_A5">Small Network (10-100 users)</option>
+	<option value="Standard_A6">Medium Network (100-500 users)</option>
+	<option value="Standard_A10">Large Network (500+ users)</option>
+	<option value="Standard_D1">Data Center Use </option>
+
+</select>
+                                
+                                &nbsp;
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>
+                                    Select Data Disk Size
+                                </label>
+                                <select class="form-control">
+                                    <option>50GB</option>
+                                    <option>100GB</option>
+                                    <option>250GB</option>
+                                    <option>500GB</option>
+                                    <option>1TB</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 area" id="build">
+                        <center>
+                            <h3>Build.</h3>
+                            <h5>Enter number of virtual machines</h5>
+                            <input type="number" min="0" class="form-control" name="buildNumberOfInstances" data-msg-number="The input must be a number" title="Number of VMs must be a non-negative number" data-msg-range="The number of VMs must be 0 to 10" data-rule-number="true" data-rule-range="[0,10]" required="" id="buildNumberOfInstances"><br>
+                        </center>
+                        <h5>Select the configuration for the virtual machines.</h5>
+                        <div>
+                            <ul class="configurations">
+                                <table id="BuildConfig">
+	<tbody><tr>
+		<td><input id="BuildConfig_0" type="radio" name="BuildConfig" value="2"><label for="BuildConfig_0">VisualStudio 2015 Enterprise RC with TFS</label></td>
+	</tr>
+</tbody></table>
+                                
+                            </ul>
+                            <center>OR<br></center>
+                            Provide the link for your personal configuration.<br>
+                            <input type="url" class="form-control" title="Example: https://github.com/prathammehta/DevOps/raw/master/ContosoWebsite.ps1.zip" placeholder="Enter DSC url" name="build_modules_url" onfocus="clearbuild();"><br>
+                            <input type="text" class="form-control" title="Example: DevConfig.ps1\\DevConfig" placeholder="Enter configuration function" name="build_configuration_function" onfocus="clearbuild();">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label>Select VM Size</label><br>
+                            <select name="buildvmSize" id="buildvmSize" class="form-control">
+	<option value="Standard_A1     ">Personal Use (1-3 users)</option>
+	<option value="Standard_A2">Team Use (3-10 users)</option>
+	<option value="Standard_A5">Small Network (10-100 users)</option>
+	<option value="Standard_A6">Medium Network (100-500 users)</option>
+	<option value="Standard_A10">Large Network (500+ users)</option>
+	<option value="Standard_D1">Data Center Use </option>
+
+</select>
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div id="test" class="col-xs-6 col-md-4 area">
+                        <center>
+                            <h3>Test.</h3>
+                            <h5>Enter number of virtual machines</h5>
+                            <input type="number" class="form-control" min="0" name="testNumberOfInstances" title="Number of VMs must be a non-negative number" data-msg-number="The input must be a number" data-msg-range="The number of VMs must be 0 to 10" data-rule-number="true" data-rule-range="[0,10]" required="" id="testNumberOfInstances" aria-pressed="undefined"><br>
+                        </center>
+                        <h5>Select the configuration for the virtual machines.</h5>
+                        <div>
+                            <ul class="configurations">
+                                <table id="TestConfig">
+	<tbody><tr>
+		<td><input id="TestConfig_0" type="radio" name="TestConfig" value="3"><label for="TestConfig_0">Visual Studio 2015 Enterprise RC</label></td>
+	</tr><tr>
+		<td><input id="TestConfig_1" type="radio" name="TestConfig" value="3"><label for="TestConfig_1">Windows 8.1</label></td>
+	</tr>
+</tbody></table>
+                                
+                                <br>
+                            </ul>
+                            <center>OR<br></center>
+                            Provide the link for your personal configuration.<br>
+                            <input type="url" class="form-control" title="Example: https://github.com/prathammehta/DevOps/raw/master/ContosoWebsite.ps1.zip" placeholder="Enter DSC url" name="testmodulesUrl" onfocus="cleartest();"><br>
+                            <input type="text" class="form-control" title="Example: DevConfig.ps1\\DevConfig" placeholder="Enter configuration function" name="test_configuration_function" onfocus="cleartest();">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label>Select VM Size</label><br>
+                            <select name="testvmSize" id="testvmSize" class="form-control">
+	<option value="Standard_A1     ">Personal Use (1-3 users)</option>
+	<option value="Standard_A2">Team Use (3-10 users)</option>
+	<option value="Standard_A5">Small Network (10-100 users)</option>
+	<option value="Standard_A6">Medium Network (100-500 users)</option>
+	<option value="Standard_A10">Large Network (500+ users)</option>
+	<option value="Standard_D1">Data Center Use </option>
+
+</select>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <center>
+                <div class="row param area">
+                        <center><h3>Extensions.</h3></center>
+                        <h5>Please note that a <strong>Active Directory</strong>, <strong>Pull server</strong> and <strong>DNS server</strong> will be automatically provisioned for each deployment.</h5>
+                        <h5>Please select the checkbox if you wish to provision corresponding extensions.</h5>
+                        <div class="checkbox">
+                           
+                            <label>
+                                <input type="checkbox" id="mysqlserver" name="mysqlserver">
+                                SQL Server
+                            </label>
+                        </div>
+                    </div>
+                    </center>
+                <div class="row">
+                    <center>
+                        <br>
+                       <input type="submit" name="Button1" value="Submit" id="Button1" class="submit" style="background-color:#3399FF;height:38px;width:138px;">
+                        <button type="reset" class="btn btn-danger">Clear</button>
+                        <br>
+                    </center>
+                </div>
+            
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0564CA07">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="BHHNBw41e7O+Po0eigRwLLr+BZ88m0fKQ9SADseKpYpPvuMhXlnFOh2OljtvHj4SnEcBS1RYPOqhnbR4KfPd9YVajaPLhMy+EPX1oo3FfpLC5WNQYnz24F3/wzy/DCnfrQozx1VYd+wL7Xk6JuZretlptbv8HDXfrSmnu4NA+s6neDqagEl7IKkPs6VGljI1D6KbG7b7W2NTFmwTBy7j3T+N3eZgQoNidCSRv+zURFdevze0YtbtqmrOTYTHlMVboLYJjNel/eRSIKL9NUq1Bm2kqPbytlvuMm/bc4CKKXD+8uAaY9Fy7VeUd7feFQdKWQjnGyRzcmleGkGI5SyboNnSMPiIwc1Unpg/2VFSkD2p8vJLZCgan3dnnzx9nOzgplDdkriNUryilb4fRGos3ZSpXi3QECJXllRujsSy/6V08DlFKgi7VRGDibn1GrjbBj4oVPanXvpd5syNOW9etQcn1mPUhM9tZshflAsUzqok6K374JLS9b8SuoOLsXS8gwdlqHq0E70Ah2+NvQVCg2+MKJuq6XTIN7ZAg2uOVjQ2ldZamEDv4XaejixypOlmObkG8zmL70Nd9OHZxRHlo6dBqu/uWhrpMsW8oqE/r0UAvekRkBcZ7i8ql0EP3Itu">
+</div></form>
+        </div>
+    </div>
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Chrome","requestId":"ab4740b5a3534095848cca81ba9ce643"}
+</script>
+<script type="text/javascript" src="http://localhost:60975/46bf6ba05de3406f9047a1333354d9cf/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+
+</body></html>
